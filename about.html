@@ -1,61 +1,80 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cyber Man - About Me</title>
+<title>Cyber Man - About</title>
 <style>
-/* === Reset & Base Styles === */
+/* === Reset & Base === */
 * {margin:0; padding:0; box-sizing:border-box; font-family:'Arial',sans-serif;}
-body {background:#0a0a0a; color:#f0f0f0; line-height:1.6;}
-a {text-decoration:none; color: inherit;}
+body {background:#0a0a0a; color:#f0f0f0;}
+a {text-decoration:none; color:inherit;}
+ul {list-style:none;}
 
-/* === Navigation Bar === */
-nav {
-  position: fixed; top:0; width:100%; background: rgba(10,10,10,0.85);
-  display:flex; justify-content: space-between; align-items:center;
-  padding:15px 5%; z-index:1000; border-bottom: 1px solid #00ffe0;
+/* === CSS Variables === */
+:root {
+  --accent: #00ffe0;
+  --gradient: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  --transition:0.3s ease-in-out;
 }
-nav .logo {font-size:1.5em; font-weight:bold; color:#00ffe0;}
-nav ul {display:flex; list-style:none; gap:25px;}
-nav ul li a {color:#00ffe0; transition:0.3s;}
-nav ul li a:hover {text-shadow:0 0 8px #00ffe0;}
 
-/* Hamburger for mobile */
+/* === Navigation === */
+nav {
+  position: fixed; top:0; width:100%; background: rgba(10,10,10,0.9);
+  display:flex; justify-content: space-between; align-items:center;
+  padding:15px 5%; z-index:1000; border-bottom:1px solid var(--accent);
+}
+nav .logo {font-size:1.5em; font-weight:bold; color:var(--accent);}
+nav ul {display:flex; gap:25px;}
+nav ul li a {color:var(--accent); transition: var(--transition);}
+nav ul li a:hover {text-shadow:0 0 8px var(--accent);}
 .hamburger {display:none; flex-direction:column; cursor:pointer;}
-.hamburger div {width:25px; height:3px; background:#00ffe0; margin:4px 0;}
+.hamburger div {width:25px; height:3px; background:var(--accent); margin:4px 0;}
 
 /* === Hero Section === */
 .hero {
-  height:50vh; display:flex; justify-content:center; align-items:center;
-  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-  margin-top:60px; color:#00ffe0; text-align:center;
+  height:30vh; display:flex; justify-content:center; align-items:center;
+  text-align:center; background:var(--gradient); color:var(--accent);
 }
 .hero h1 {font-size:3em; margin-bottom:10px;}
 .hero p {font-size:1.2em;}
 
-/* === Section Styling === */
-section {padding:80px 5%;}
-h2 {font-size:2em; margin-bottom:40px; color:#00ffe0; text-align:center;}
-
-/* === Cards Styling === */
-.cards {display:flex; flex-wrap:wrap; gap:25px; justify-content:center;}
-.card {
-  background: rgba(0,255,224,0.05); border:1px solid #00ffe0;
-  padding:20px; border-radius:15px; width:280px; text-align:center;
-  transition: transform 0.3s, box-shadow 0.3s;
+/* === Timeline Section === */
+.timeline {position:relative; padding:50px 0;}
+.timeline::before {
+  content:'';
+  position:absolute; left:50%; top:0; transform:translateX(-50%);
+  width:4px; height:100%; background:var(--accent);
 }
-.card:hover {transform: translateY(-10px); box-shadow: 0 0 20px #00ffe0;}
-.card h3 {margin-bottom:15px; color:#00ffe0;}
-.card p {color:#a0f0ff; font-size:0.95em;}
+.timeline-item {
+  position:relative; width:45%; padding:20px; background:rgba(0,255,224,0.05);
+  border-radius:15px; margin:20px 0; transition:var(--transition);
+}
+.timeline-item.left {left:0; transform:translateX(-10px);}
+.timeline-item.right {left:55%; transform:translateX(10px);}
+.timeline-item:hover {transform:scale(1.05); box-shadow:0 0 20px var(--accent);}
+.timeline-item h3 {color:var(--accent); margin-bottom:10px;}
+.timeline-item p {color:#f0f0f0; line-height:1.5;}
+.timeline-item::after {
+  content:''; position:absolute; width:20px; height:20px; background:var(--accent);
+  border-radius:50%; top:20px; left:-10px; border:3px solid #0a0a0a;
+}
+.timeline-item.right::after {left:auto; right:-10px;}
+
+/* === Footer === */
+footer {text-align:center; padding:30px 5%; border-top:1px solid var(--accent); color:var(--accent);}
 
 /* === Responsive === */
-@media(max-width:900px){.cards{flex-direction:column; align-items:center;}}
+@media(max-width:768px){
+  nav ul {display:none; flex-direction:column; gap:15px; background:rgba(10,10,10,0.95); position:absolute; top:60px; right:5%; padding:15px; border-radius:12px;}
+  .hamburger {display:flex;}
+  .timeline-item {width:90% !important; left:5% !important; transform:none !important;}
+}
 </style>
 </head>
 <body>
 
-<!-- Navigation Bar -->
+<!-- Navigation -->
 <nav>
   <div class="logo">Cyber Man</div>
   <ul>
@@ -63,8 +82,7 @@ h2 {font-size:2em; margin-bottom:40px; color:#00ffe0; text-align:center;}
     <li><a href="about.html">About</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="testimonials.html">Testimonials</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="socials.html">Socials</a></li>
   </ul>
   <div class="hamburger" onclick="toggleMenu()">
     <div></div><div></div><div></div>
@@ -75,55 +93,34 @@ h2 {font-size:2em; margin-bottom:40px; color:#00ffe0; text-align:center;}
 <section class="hero">
   <div>
     <h1>About Cyber Man</h1>
-    <p>Securing digital spaces with intelligence, strategy, and precision.</p>
+    <p>Learn about my journey and educational background</p>
   </div>
 </section>
 
-<!-- Education & Background -->
-<section>
-  <h2>Education & Background</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Primary School</h3>
-      <p>Army Barrack Primary School</p>
-    </div>
-    <div class="card">
-      <h3>Junior Secondary School</h3>
-      <p>Government Day Junior Secondary School Yerimaram</p>
-    </div>
-    <div class="card">
-      <h3>Senior Secondary School</h3>
-      <p>Assasul Islam Science Secondary of JIBWIS Potiskum</p>
-    </div>
-    <div class="card">
-      <h3>University</h3>
-      <p>Nigerian Army University Biu (NAUB) - BSc Cybersecurity</p>
-    </div>
+<!-- Timeline Section -->
+<section class="timeline">
+  <div class="timeline-item left">
+    <h3>Army Barrack Primary School</h3>
+    <p>Completed foundational primary education.</p>
+  </div>
+  <div class="timeline-item right">
+    <h3>Government Day Junior Secondary School Yerimaram</h3>
+    <p>Studied basic sciences and computing fundamentals.</p>
+  </div>
+  <div class="timeline-item left">
+    <h3>Assasul Islam Science Secondary of JIBWIS Potiskum</h3>
+    <p>Senior secondary education focused on science.</p>
+  </div>
+  <div class="timeline-item right">
+    <h3>Nigerian Army University Biu (NAUB)</h3>
+    <p>BSc Cybersecurity, specializing in cyber defense and online security strategies.</p>
   </div>
 </section>
 
-<!-- Skills Section -->
-<section>
-  <h2>Core Skills</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Social Media Security</h3>
-      <p>Protecting accounts from hacks and unauthorized access.</p>
-    </div>
-    <div class="card">
-      <h3>Network Analysis</h3>
-      <p>Monitoring and securing network traffic efficiently.</p>
-    </div>
-    <div class="card">
-      <h3>Cyber Threat Assessment</h3>
-      <p>Identifying vulnerabilities before attackers do.</p>
-    </div>
-    <div class="card">
-      <h3>Advisory & Strategy</h3>
-      <p>Providing actionable recommendations for digital safety.</p>
-    </div>
-  </div>
-</section>
+<!-- Footer -->
+<footer>
+  &copy; 2025 Cyber Man. All Rights Reserved.
+</footer>
 
 <script>
 // Hamburger toggle
@@ -131,17 +128,7 @@ function toggleMenu(){
   const ul = document.querySelector('nav ul');
   ul.style.display = ul.style.display==='flex' ? 'none' : 'flex';
 }
-
-// Optional: hide nav on scroll down, show on scroll up
-let lastScroll = 0;
-const nav = document.querySelector('nav');
-window.addEventListener('scroll',()=>{
-  let current = window.pageYOffset;
-  if(current > lastScroll){ nav.style.top='-70px'; } 
-  else { nav.style.top='0'; }
-  lastScroll = current;
-});
 </script>
 
 </body>
-</html>
+  </html>
