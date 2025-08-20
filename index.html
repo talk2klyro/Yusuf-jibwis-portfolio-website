@@ -1,0 +1,105 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Man - Cybersecurity Analyst</title>
+<style>
+/* === Reset & Base Styles === */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Arial',sans-serif;}
+body {background:#0a0a0a; color:#f0f0f0; line-height:1.6;}
+a {text-decoration:none; color: inherit;}
+
+/* === Navigation Bar === */
+nav {
+  position: fixed; top:0; width:100%; background: rgba(10,10,10,0.85);
+  display:flex; justify-content: space-between; align-items:center;
+  padding:15px 5%; z-index:1000; border-bottom: 1px solid #00ffe0;
+}
+nav .logo {font-size:1.5em; font-weight:bold; color:#00ffe0;}
+nav ul {display:flex; list-style:none; gap:25px;}
+nav ul li a {color:#00ffe0; transition:0.3s;}
+nav ul li a:hover {text-shadow:0 0 8px #00ffe0;}
+
+/* Hamburger for mobile */
+.hamburger {display:none; flex-direction:column; cursor:pointer;}
+.hamburger div {width:25px; height:3px; background:#00ffe0; margin:4px 0;}
+
+/* === Hero Section === */
+.hero {
+  height:100vh; display:flex; justify-content:space-between; align-items:center;
+  padding:0 5%; background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  overflow:hidden; margin-top:60px;
+}
+.hero h1 {font-size:3em; margin-bottom:20px; color:#00ffe0;}
+.hero p {font-size:1.2em; margin-bottom:30px; color:#a0f0ff;}
+.hero button {
+  padding:12px 25px; margin-right:15px; border:none; border-radius:8px;
+  background:#00ffe0; color:#000; font-weight:bold; transition:0.3s;
+}
+.hero button:hover {background:#00bfa5; color:#fff;}
+.hero img {width:40%; border-radius:20px; animation: float 4s ease-in-out infinite;}
+
+/* === Responsive Hero === */
+@media(max-width:900px){
+  .hero {flex-direction:column; text-align:center;}
+  .hero img {width:60%; margin-top:20px;}
+}
+
+/* === Animations === */
+@keyframes float {0%,100%{transform: translateY(0);}50%{transform: translateY(-10px);}}
+
+/* === Section Styling === */
+section {padding:80px 5%;}
+h2 {font-size:2em; margin-bottom:40px; color:#00ffe0; text-align:center;}
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+  <div class="logo">Cyber Man</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Cyber Man</h1>
+    <p>Protecting your digital world & securing social media accounts with AI-powered strategies.</p>
+    <button onclick="location.href='services.html'">Work With Me</button>
+    <button onclick="location.href='portfolio.html'">View 3D Portfolio</button>
+  </div>
+  <img src="https://via.placeholder.com/400x400/00ffe0/000?text=Cyber+Man" alt="Cyber Man Avatar">
+</section>
+
+<script>
+// Hamburger toggle
+function toggleMenu(){
+  const ul = document.querySelector('nav ul');
+  ul.style.display = ul.style.display==='flex' ? 'none' : 'flex';
+}
+
+// Optional: hide nav on scroll down, show on scroll up
+let lastScroll = 0;
+const nav = document.querySelector('nav');
+window.addEventListener('scroll',()=>{
+  let current = window.pageYOffset;
+  if(current > lastScroll){ nav.style.top='-70px'; } 
+  else { nav.style.top='0'; }
+  lastScroll = current;
+});
+</script>
+
+</body>
+</html>
