@@ -1,0 +1,107 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Man - Socials</title>
+<style>
+/* === Reset & Base Styles === */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Arial',sans-serif;}
+body {background:#0a0a0a; color:#f0f0f0; display:flex; flex-direction:column; align-items:center;}
+a {text-decoration:none; color: inherit;}
+
+/* === Navigation Bar === */
+nav {
+  position: fixed; top:0; width:100%; background: rgba(10,10,10,0.85);
+  display:flex; justify-content: space-between; align-items:center;
+  padding:15px 5%; z-index:1000; border-bottom: 1px solid #00ffe0;
+}
+nav .logo {font-size:1.5em; font-weight:bold; color:#00ffe0;}
+nav ul {display:flex; list-style:none; gap:25px;}
+nav ul li a {color:#00ffe0; transition:0.3s;}
+nav ul li a:hover {text-shadow:0 0 8px #00ffe0;}
+.hamburger {display:none; flex-direction:column; cursor:pointer;}
+.hamburger div {width:25px; height:3px; background:#00ffe0; margin:4px 0;}
+
+/* === Hero Section === */
+.hero {
+  height:30vh; display:flex; justify-content:center; align-items:center;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  margin-top:60px; color:#00ffe0; text-align:center;
+}
+.hero h1 {font-size:3em; margin-bottom:10px;}
+.hero p {font-size:1.2em;}
+
+/* === Social Buttons Section === */
+.socials-container {
+  display:flex; flex-direction: column; align-items:center;
+  gap:25px; margin-top:50px;
+}
+.social-btn {
+  display:flex; align-items:center; gap:15px;
+  padding:15px 30px;
+  border:2px solid #00ffe0;
+  border-radius:15px;
+  background: rgba(0,255,224,0.05);
+  color:#00ffe0; font-size:1.2em; font-weight:bold;
+  cursor:pointer; transition: transform 0.3s, box-shadow 0.3s;
+}
+.social-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ffe0;
+}
+.social-btn img {width:30px; height:30px;}
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+  <div class="logo">Cyber Man</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="socials.html">Socials</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div>
+    <h1>Connect with Me</h1>
+    <p>Follow and reach out via my social platforms</p>
+  </div>
+</section>
+
+<!-- Social Buttons -->
+<section class="socials-container">
+  <a class="social-btn" href="https://www.instagram.com/yusuf_cyber01?igsh=MW55bGx3aTVhNDExMw%3D%3D&utm_source=qr" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"> Instagram
+  </a>
+  <a class="social-btn" href="https://wa.me/09069642529" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp"> WhatsApp
+  </a>
+  <a class="social-btn" href="https://www.tiktok.com/@Cyberman" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok"> TikTok
+  </a>
+  <a class="social-btn" href="https://www.facebook.com/YusufIsmailMuhammed" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook"> Facebook
+  </a>
+</section>
+
+<script>
+// Hamburger toggle
+function toggleMenu(){
+  const ul = document.querySelector('nav ul');
+  ul.style.display = ul.style.display==='flex' ? 'none' : 'flex';
+}
+</script>
+
+</body>
+</html>
