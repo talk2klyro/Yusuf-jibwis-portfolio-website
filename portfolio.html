@@ -1,0 +1,147 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Man - Portfolio</title>
+<style>
+/* === Reset & Base Styles === */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Arial',sans-serif;}
+body {background:#0a0a0a; color:#f0f0f0;}
+a {text-decoration:none; color: inherit;}
+
+/* === Navigation Bar === */
+nav {
+  position: fixed; top:0; width:100%; background: rgba(10,10,10,0.85);
+  display:flex; justify-content: space-between; align-items:center;
+  padding:15px 5%; z-index:1000; border-bottom: 1px solid #00ffe0;
+}
+nav .logo {font-size:1.5em; font-weight:bold; color:#00ffe0;}
+nav ul {display:flex; list-style:none; gap:25px;}
+nav ul li a {color:#00ffe0; transition:0.3s;}
+nav ul li a:hover {text-shadow:0 0 8px #00ffe0;}
+.hamburger {display:none; flex-direction:column; cursor:pointer;}
+.hamburger div {width:25px; height:3px; background:#00ffe0; margin:4px 0;}
+
+/* === Hero Section === */
+.hero {
+  height:40vh; display:flex; justify-content:center; align-items:center;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  margin-top:60px; color:#00ffe0; text-align:center;
+}
+.hero h1 {font-size:3em; margin-bottom:10px;}
+.hero p {font-size:1.2em;}
+
+/* === Portfolio Coverflow === */
+.coverflow-container {
+  perspective: 1200px;
+  width: 100%; max-width:1000px; margin: 80px auto 0 auto;
+  overflow-x: hidden; padding-bottom:50px;
+}
+.coverflow {
+  display: flex;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  cursor: grab;
+}
+.coverflow-item {
+  flex: 0 0 250px;
+  margin: 0 15px;
+  transform-origin: center center;
+  transition: transform 0.5s, box-shadow 0.5s;
+  border-radius:15px; overflow:hidden;
+  border: 2px solid #00ffe0;
+}
+.coverflow-item img {
+  width: 100%; height: auto; display: block;
+}
+.coverflow-item.active {
+  transform: translateZ(100px) scale(1.1);
+  box-shadow: 0 0 30px #00ffe0;
+}
+.coverflow-item.prev, .coverflow-item.next {
+  transform: rotateY(-40deg) translateX(-40px) scale(0.9);
+}
+.coverflow-item.next {transform: rotateY(40deg) translateX(40px) scale(0.9);}
+
+/* === Responsive === */
+@media(max-width:900px){.coverflow-item{flex:0 0 180px;}}
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+  <div class="logo">Cyber Man</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div>
+    <h1>Portfolio</h1>
+    <p>Some of my recent cybersecurity projects and achievements.</p>
+  </div>
+</section>
+
+<!-- Coverflow Portfolio -->
+<section class="coverflow-container">
+  <div class="coverflow" id="coverflow">
+    <div class="coverflow-item active"><img src="https://via.placeholder.com/250x150?text=Project+1" alt="Project 1"></div>
+    <div class="coverflow-item next"><img src="https://via.placeholder.com/250x150?text=Project+2" alt="Project 2"></div>
+    <div class="coverflow-item"><img src="https://via.placeholder.com/250x150?text=Project+3" alt="Project 3"></div>
+    <div class="coverflow-item prev"><img src="https://via.placeholder.com/250x150?text=Project+4" alt="Project 4"></div>
+    <div class="coverflow-item"><img src="https://via.placeholder.com/250x150?text=Project+5" alt="Project 5"></div>
+  </div>
+</section>
+
+<script>
+// Hamburger toggle
+function toggleMenu(){
+  const ul = document.querySelector('nav ul');
+  ul.style.display = ul.style.display==='flex' ? 'none' : 'flex';
+}
+
+// Coverflow logic
+const coverflow = document.getElementById('coverflow');
+let activeIndex = 0;
+const items = document.querySelectorAll('.coverflow-item');
+
+function updateCoverflow(){
+  items.forEach((item, i) => {
+    item.classList.remove('prev','next','active');
+    if(i === activeIndex) item.classList.add('active');
+    if(i === activeIndex -1 || (activeIndex===0 && i === items.length-1)) item.classList.add('prev');
+    if(i === activeIndex +1 || (activeIndex===items.length-1 && i===0)) item.classList.add('next');
+  });
+}
+
+// Optional: auto slide
+setInterval(()=>{
+  activeIndex = (activeIndex +1)%items.length;
+  updateCoverflow();
+},3000);
+
+// Optional: drag to rotate (basic)
+let isDown=false, startX=0;
+coverflow.addEventListener('mousedown',(e)=>{isDown=true; startX=e.pageX;});
+coverflow.addEventListener('mouseup',(e)=>{isDown=false;});
+coverflow.addEventListener('mousemove',(e)=>{
+  if(!isDown) return;
+  if(e.pageX - startX > 50){ activeIndex = (activeIndex-1+items.length)%items.length; updateCoverflow(); startX=e.pageX;}
+  if(startX - e.pageX > 50){ activeIndex = (activeIndex+1)%items.length; updateCoverflow(); startX=e.pageX;}
+});
+</script>
+
+</body>
+</html>
