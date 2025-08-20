@@ -1,0 +1,139 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Man - Testimonials</title>
+<style>
+/* === Reset & Base Styles === */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Arial',sans-serif;}
+body {background:#0a0a0a; color:#f0f0f0;}
+a {text-decoration:none; color: inherit;}
+
+/* === Navigation Bar === */
+nav {
+  position: fixed; top:0; width:100%; background: rgba(10,10,10,0.85);
+  display:flex; justify-content: space-between; align-items:center;
+  padding:15px 5%; z-index:1000; border-bottom: 1px solid #00ffe0;
+}
+nav .logo {font-size:1.5em; font-weight:bold; color:#00ffe0;}
+nav ul {display:flex; list-style:none; gap:25px;}
+nav ul li a {color:#00ffe0; transition:0.3s;}
+nav ul li a:hover {text-shadow:0 0 8px #00ffe0;}
+.hamburger {display:none; flex-direction:column; cursor:pointer;}
+.hamburger div {width:25px; height:3px; background:#00ffe0; margin:4px 0;}
+
+/* === Hero Section === */
+.hero {
+  height:30vh; display:flex; justify-content:center; align-items:center;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  margin-top:60px; color:#00ffe0; text-align:center;
+}
+.hero h1 {font-size:3em; margin-bottom:10px;}
+.hero p {font-size:1.2em;}
+
+/* === Testimonials Carousel === */
+.carousel-container {
+  width: 90%; max-width:800px; margin: 60px auto;
+  overflow: hidden; position: relative;
+}
+.carousel-track {
+  display: flex; transition: transform 0.5s ease-in-out;
+}
+.carousel-item {
+  flex: 0 0 100%;
+  padding: 20px;
+  background: rgba(0,255,224,0.05);
+  border: 2px solid #00ffe0;
+  border-radius: 15px;
+  text-align: center;
+}
+.carousel-item p {font-size:1.2em; margin-bottom:15px;}
+.carousel-item h3 {color:#00ffe0; font-size:1.1em;}
+
+/* Carousel Buttons */
+.prev-btn, .next-btn {
+  position: absolute; top:50%; transform: translateY(-50%);
+  background: rgba(0,255,224,0.2); border:none; padding:10px; cursor:pointer;
+  border-radius:50%; color:#00ffe0; font-size:1.2em; transition:0.3s;
+}
+.prev-btn:hover, .next-btn:hover {background: rgba(0,255,224,0.5);}
+.prev-btn {left:10px;}
+.next-btn {right:10px;}
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+  <div class="logo">Cyber Man</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div>
+    <h1>Testimonials</h1>
+    <p>Hear from clients and collaborators I've worked with.</p>
+  </div>
+</section>
+
+<!-- Testimonials Carousel -->
+<section class="carousel-container">
+  <button class="prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+  <div class="carousel-track" id="carouselTrack">
+    <div class="carousel-item">
+      <p>"Cyber Man secured our social media accounts like a pro. Highly recommended!"</p>
+      <h3>- Aliyu T., Client</h3>
+    </div>
+    <div class="carousel-item">
+      <p>"Quick response and top-notch cybersecurity advice. Our business feels safer."</p>
+      <h3>- Fatima S., Client</h3>
+    </div>
+    <div class="carousel-item">
+      <p>"Impressive knowledge in digital security and social media safety strategies."</p>
+      <h3>- Musa K., Collaborator</h3>
+    </div>
+  </div>
+  <button class="next-btn" onclick="moveSlide(1)">&#10095;</button>
+</section>
+
+<script>
+// Hamburger toggle
+function toggleMenu(){
+  const ul = document.querySelector('nav ul');
+  ul.style.display = ul.style.display==='flex' ? 'none' : 'flex';
+}
+
+// Carousel logic
+const track = document.getElementById('carouselTrack');
+const slides = document.querySelectorAll('.carousel-item');
+let index = 0;
+
+function updateCarousel() {
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function moveSlide(dir){
+  index += dir;
+  if(index < 0) index = slides.length -1;
+  if(index >= slides.length) index = 0;
+  updateCarousel();
+}
+
+// Auto-slide every 5 seconds
+setInterval(()=>{ moveSlide(1); }, 5000);
+</script>
+
+</body>
+</html>
