@@ -6,68 +6,230 @@
 <title>Cyber Man - Home</title>
 <style>
 /* === Reset & Base Styles === */
-* {margin:0; padding:0; box-sizing:border-box; font-family:'Arial',sans-serif;}
-body {background:#0a0a0a; color:#f0f0f0;}
-a {text-decoration:none; color:inherit;}
-ul {list-style:none;}
-
-/* === CSS Variables === */
-:root {
-  --accent: #00ffe0;
-  --gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  --transition: 0.3s ease-in-out;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* === Navigation === */
+body {
+  background: #0f111a; /* Dark background, subtle futuristic vibe */
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+/* === Navbar === */
 nav {
-  position: fixed; top:0; width:100%; background: rgba(10,10,10,0.9);
-  display:flex; justify-content: space-between; align-items:center;
-  padding:15px 5%; z-index:1000; border-bottom:1px solid var(--accent);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(15, 17, 26, 0.95);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  z-index: 1000;
+  border-bottom: 1px solid #444;
 }
-nav .logo {font-size:1.5em; font-weight:bold; color:var(--accent);}
-nav ul {display:flex; gap:25px;}
-nav ul li a {color:var(--accent); transition: var(--transition);}
-nav ul li a:hover {text-shadow:0 0 8px var(--accent);}
-.hamburger {display:none; flex-direction:column; cursor:pointer;}
-.hamburger div {width:25px; height:3px; background:var(--accent); margin:4px 0;}
+
+nav .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #00c8ff;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+nav ul li a {
+  color: #e0e0e0;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+nav ul li a:hover {
+  color: #00c8ff;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background: #00c8ff;
+  margin: 4px 0;
+}
 
 /* === Hero Section === */
 .hero {
-  height:80vh; display:flex; justify-content:center; align-items:center;
-  text-align:center; background:var(--gradient); color:var(--accent);
-  flex-direction:column; padding:0 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 5%;
+  background: linear-gradient(120deg, #1c1f2b, #0f111a);
 }
-.hero h1 {font-size:clamp(2rem,5vw,4rem); margin-bottom:20px; animation:fadeIn 2s ease forwards;}
-.hero p {font-size:clamp(1rem,2vw,1.5rem); margin-bottom:30px; animation:fadeIn 2s 0.5s ease forwards; opacity:0;}
-.hero a {padding:12px 30px; border:2px solid var(--accent); border-radius:12px; color:var(--accent); transition:var(--transition);}
-.hero a:hover {background:var(--accent); color:#0a0a0a; transform:scale(1.05);}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 20px;
+  color: #00c8ff;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 1s forwards;
+}
+
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: #c0c0c0;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 1s forwards 0.3s;
+}
+
+.hero .btn {
+  padding: 12px 30px;
+  background: #00c8ff;
+  color: #0f111a;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.hero .btn:hover {
+  transform: scale(1.05);
+  background: #00a4d1;
+}
 
 /* === Sections === */
-section {padding:80px 5%; max-width:1200px; margin:auto;}
-h2 {text-align:center; margin-bottom:40px; color:var(--accent); font-size:clamp(1.5rem,4vw,2.5rem);}
-.cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px;}
-.card {background:rgba(0,255,224,0.05); padding:20px; border-radius:15px; text-align:center; transition:var(--transition);}
-.card:hover {transform:translateY(-10px); box-shadow:0 0 20px var(--accent);}
-.card h3 {margin-bottom:15px; color:var(--accent);}
-.card p {font-size:1rem; line-height:1.5; color:#f0f0f0;}
+section {
+  padding: 80px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-/* === Animations === */
-@keyframes fadeIn {from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);}}
-.fade-in {opacity:0; animation:fadeIn 1s forwards;}
+/* === About Section === */
+.about h2 {
+  color: #00c8ff;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 20px;
+}
+
+.about .timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.timeline-item {
+  background: #1c1f2b;
+  padding: 20px;
+  border-left: 4px solid #00c8ff;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: fadeSlideInLeft 0.8s forwards;
+}
+
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.4s; }
+.timeline-item:nth-child(4) { animation-delay: 0.6s; }
+.timeline-item:nth-child(5) { animation-delay: 0.8s; }
+
+/* === Services Section === */
+.services h2 {
+  color: #00c8ff;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  background: #1c1f2b;
+  padding: 25px;
+  border-radius: 8px;
+  border-left: 4px solid #00c8ff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0,200,255,0.4);
+}
+
+/* === Portfolio Section === */
+.portfolio h2 {
+  color: #00c8ff;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.portfolio-card {
+  background: #1c1f2b;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #00c8ff;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0,200,255,0.4);
+}
 
 /* === Footer === */
-footer {text-align:center; padding:30px 5%; border-top:1px solid var(--accent); color:var(--accent);}
+footer {
+  text-align: center;
+  padding: 40px 5%;
+  border-top: 1px solid #444;
+  color: #888;
+}
 
-/* === Responsive === */
-@media(max-width:768px){
-  nav ul {display:none; flex-direction:column; gap:15px; background:rgba(10,10,10,0.95); position:absolute; top:60px; right:5%; padding:15px; border-radius:12px;}
-  .hamburger {display:flex;}
+/* === Animations === */
+@keyframes fadeSlideIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideInLeft {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* === Responsive Hamburger === */
+@media(max-width:768px) {
+  nav ul { display: none; flex-direction: column; gap: 15px; background: #0f111a; position: absolute; top:60px; right:5%; padding:15px; border-radius:8px; }
+  .hamburger { display: flex; }
 }
 </style>
 </head>
 <body>
 
-<!-- Navigation -->
+<!-- Navbar -->
 <nav>
   <div class="logo">Cyber Man</div>
   <ul>
@@ -85,63 +247,63 @@ footer {text-align:center; padding:30px 5%; border-top:1px solid var(--accent); 
 <!-- Hero Section -->
 <section class="hero">
   <h1>Cyber Man</h1>
-  <p>Cyber Security Analyst from Potiskum</p>
-  <a href="about.html">Learn More</a>
+  <p>Cyber Security Analyst based in Potiskum. Securing social media and digital footprints.</p>
+  <button class="btn" onclick="window.location.href='services.html'">View Services</button>
 </section>
 
-<!-- About Preview -->
-<section>
+<!-- About Section -->
+<section class="about">
   <h2>About Me</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Education</h3>
-      <p>BSc in Cybersecurity, Nigerian Army University Biu</p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <strong>Primary School:</strong> Army Barrack Primary School
     </div>
-    <div class="card">
-      <h3>Experience</h3>
-      <p>Specialized in securing social media and cyber defense strategies.</p>
+    <div class="timeline-item">
+      <strong>Junior Secondary:</strong> Government Day Junior Secondary School Yerimaram
     </div>
-    <div class="card">
-      <h3>Location</h3>
-      <p>Potiskum, Nigeria</p>
+    <div class="timeline-item">
+      <strong>Senior Secondary:</strong> Assasul Islam Science Secondary of JIBWIS Potiskum
+    </div>
+    <div class="timeline-item">
+      <strong>University:</strong> Nigerian Army University Biu (NAUB), BSc Cybersecurity
     </div>
   </div>
 </section>
 
-<!-- Services Preview -->
-<section>
+<!-- Services Section -->
+<section class="services">
   <h2>Services</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Social Media Security</h3>
-      <p>Step-by-step strategies to protect your accounts.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <strong>Social Media Assessment</strong>
+      <p>Reviewing social media accounts for vulnerabilities and privacy risks.</p>
     </div>
-    <div class="card">
-      <h3>Cyber Analysis</h3>
-      <p>Analyze threats and vulnerabilities in digital platforms.</p>
+    <div class="service-card">
+      <strong>Security Steps Guidance</strong>
+      <p>Providing actionable steps to secure your social media presence effectively.</p>
     </div>
-    <div class="card">
-      <h3>Consulting</h3>
-      <p>Personalized guidance for secure online presence.</p>
+    <div class="service-card">
+      <strong>Account Recovery Assistance</strong>
+      <p>Helping clients regain access to compromised accounts securely.</p>
     </div>
   </div>
 </section>
 
-<!-- Portfolio Preview -->
-<section>
+<!-- Portfolio Section -->
+<section class="portfolio">
   <h2>Portfolio</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Mock Project 1</h3>
-      <p>Social media penetration testing case study.</p>
+  <div class="portfolio-grid">
+    <div class="portfolio-card" onclick="alert('Project 1 details coming soon!')">
+      <strong>Social Media Audit Tool</strong>
+      <p>Custom tool developed to assess social media security and privacy risks efficiently.</p>
     </div>
-    <div class="card">
-      <h3>Mock Project 2</h3>
-      <p>Cyber threat analysis and mitigation strategies.</p>
+    <div class="portfolio-card" onclick="alert('Project 2 details coming soon!')">
+      <strong>Password Management System</strong>
+      <p>A secure system designed for safe storage and management of credentials.</p>
     </div>
-    <div class="card">
-      <h3>Mock Project 3</h3>
-      <p>Security audit for digital platforms.</p>
+    <div class="portfolio-card" onclick="alert('Project 3 details coming soon!')">
+      <strong>Phishing Awareness Program</strong>
+      <p>Educational program designed to teach users how to recognize and avoid phishing attacks.</p>
     </div>
   </div>
 </section>
@@ -151,12 +313,25 @@ footer {text-align:center; padding:30px 5%; border-top:1px solid var(--accent); 
   &copy; 2025 Cyber Man. All Rights Reserved.
 </footer>
 
+<!-- Scripts -->
 <script>
 // Hamburger toggle
 function toggleMenu(){
   const ul = document.querySelector('nav ul');
   ul.style.display = ul.style.display==='flex' ? 'none' : 'flex';
 }
+
+// Scroll animations
+window.addEventListener('scroll', () => {
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  timelineItems.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100){
+      item.style.opacity = 1;
+      item.style.transform = 'translateX(0)';
+    }
+  });
+});
 </script>
 
 </body>
