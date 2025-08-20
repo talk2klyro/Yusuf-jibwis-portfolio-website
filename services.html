@@ -1,63 +1,75 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cyber Man - Services</title>
 <style>
-/* === Reset & Base Styles === */
+/* === Reset & Base === */
 * {margin:0; padding:0; box-sizing:border-box; font-family:'Arial',sans-serif;}
 body {background:#0a0a0a; color:#f0f0f0;}
-a {text-decoration:none; color: inherit;}
+a {text-decoration:none; color:inherit;}
 
-/* === Navigation Bar === */
-nav {
-  position: fixed; top:0; width:100%; background: rgba(10,10,10,0.85);
-  display:flex; justify-content: space-between; align-items:center;
-  padding:15px 5%; z-index:1000; border-bottom: 1px solid #00ffe0;
+/* === CSS Variables === */
+:root {
+  --accent: #00ffe0;
+  --gradient: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  --transition:0.3s ease-in-out;
 }
-nav .logo {font-size:1.5em; font-weight:bold; color:#00ffe0;}
-nav ul {display:flex; list-style:none; gap:25px;}
-nav ul li a {color:#00ffe0; transition:0.3s;}
-nav ul li a:hover {text-shadow:0 0 8px #00ffe0;}
+
+/* === Navigation === */
+nav {
+  position: fixed; top:0; width:100%; background: rgba(10,10,10,0.9);
+  display:flex; justify-content: space-between; align-items:center;
+  padding:15px 5%; z-index:1000; border-bottom:1px solid var(--accent);
+}
+nav .logo {font-size:1.5em; font-weight:bold; color:var(--accent);}
+nav ul {display:flex; gap:25px;}
+nav ul li a {color:var(--accent); transition: var(--transition);}
+nav ul li a:hover {text-shadow:0 0 8px var(--accent);}
 .hamburger {display:none; flex-direction:column; cursor:pointer;}
-.hamburger div {width:25px; height:3px; background:#00ffe0; margin:4px 0;}
+.hamburger div {width:25px; height:3px; background:var(--accent); margin:4px 0;}
 
 /* === Hero Section === */
 .hero {
-  height:30vh; display:flex; justify-content:center; align-items:center;
-  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-  margin-top:60px; color:#00ffe0; text-align:center;
+  height:25vh; display:flex; justify-content:center; align-items:center;
+  text-align:center; background:var(--gradient); color:var(--accent);
 }
 .hero h1 {font-size:3em; margin-bottom:10px;}
 .hero p {font-size:1.2em;}
 
 /* === Services Section === */
-.services-container {
-  width:90%; max-width:1000px; margin:60px auto; display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap:25px;
-}
+.services {display:flex; flex-wrap:wrap; justify-content:center; gap:30px; padding:50px 5%;}
 .service-card {
-  background: rgba(0,255,224,0.05);
-  border: 2px solid #00ffe0;
-  border-radius:15px;
-  padding:25px;
-  text-align:center;
+  background: rgba(0,255,224,0.05); border:2px solid var(--accent);
+  border-radius:15px; padding:30px; width:300px; text-align:center;
   transition: transform 0.3s, box-shadow 0.3s;
-  cursor:pointer;
 }
 .service-card:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 0 20px #00ffe0;
+  transform: scale(1.05);
+  box-shadow:0 0 20px var(--accent);
 }
-.service-card h3 {color:#00ffe0; margin-bottom:10px;}
-.service-card p {font-size:1em; line-height:1.5; color:#e0f7f4;}
+.service-card h3 {color:var(--accent); margin-bottom:15px;}
+.service-card p {line-height:1.5; color:#f0f0f0;}
+
+/* Step badges */
+.step {display:inline-block; background:var(--accent); color:#0a0a0a; 
+      border-radius:50%; width:30px; height:30px; line-height:30px; font-weight:bold; margin-bottom:10px;}
+
+/* === Footer === */
+footer {text-align:center; padding:30px 5%; border-top:1px solid var(--accent); color:var(--accent);}
+
+/* === Responsive === */
+@media(max-width:768px){
+  nav ul {display:none; flex-direction:column; gap:15px; background:rgba(10,10,10,0.95); position:absolute; top:60px; right:5%; padding:15px; border-radius:12px;}
+  .hamburger {display:flex;}
+  .services {flex-direction:column; align-items:center;}
+}
 </style>
 </head>
 <body>
 
-<!-- Navigation Bar -->
+<!-- Navigation -->
 <nav>
   <div class="logo">Cyber Man</div>
   <ul>
@@ -65,8 +77,7 @@ nav ul li a:hover {text-shadow:0 0 8px #00ffe0;}
     <li><a href="about.html">About</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="testimonials.html">Testimonials</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="socials.html">Socials</a></li>
   </ul>
   <div class="hamburger" onclick="toggleMenu()">
     <div></div><div></div><div></div>
@@ -76,38 +87,44 @@ nav ul li a:hover {text-shadow:0 0 8px #00ffe0;}
 <!-- Hero Section -->
 <section class="hero">
   <div>
-    <h1>Services</h1>
-    <p>Steps to Secure Your Social Media</p>
+    <h1>My Services</h1>
+    <p>Steps to Secure Your Social Media & Cyber Safety</p>
   </div>
 </section>
 
-<!-- Services Cards -->
-<section class="services-container">
+<!-- Services Section -->
+<section class="services">
   <div class="service-card">
-    <h3>1. Strong Passwords</h3>
-    <p>Create unique and complex passwords for each account and update them regularly.</p>
+    <div class="step">1</div>
+    <h3>Account Audit</h3>
+    <p>Review all social media accounts for security vulnerabilities and weak points.</p>
   </div>
   <div class="service-card">
-    <h3>2. Two-Factor Authentication</h3>
-    <p>Enable 2FA to add an extra layer of security for your social media accounts.</p>
+    <div class="step">2</div>
+    <h3>Password & 2FA Setup</h3>
+    <p>Ensure strong passwords and enable two-factor authentication for maximum protection.</p>
   </div>
   <div class="service-card">
-    <h3>3. Privacy Settings</h3>
-    <p>Configure privacy settings to control who sees your posts, profile, and activity.</p>
+    <div class="step">3</div>
+    <h3>Privacy Configuration</h3>
+    <p>Adjust privacy settings to limit exposure and secure personal data on social media.</p>
   </div>
   <div class="service-card">
-    <h3>4. Recognize Phishing</h3>
-    <p>Be aware of suspicious links and messages to prevent unauthorized access.</p>
+    <div class="step">4</div>
+    <h3>Monitoring & Alerts</h3>
+    <p>Set up alerts for suspicious activity and monitor account access for threats.</p>
   </div>
   <div class="service-card">
-    <h3>5. Regular Monitoring</h3>
-    <p>Check account activity regularly and remove unknown devices or apps.</p>
-  </div>
-  <div class="service-card">
-    <h3>6. Backup & Recovery</h3>
-    <p>Keep account recovery options updated and maintain backups for important data.</p>
+    <div class="step">5</div>
+    <h3>Security Training</h3>
+    <p>Educate clients on best practices and behavior to prevent account compromise.</p>
   </div>
 </section>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 Cyber Man. All Rights Reserved.
+</footer>
 
 <script>
 // Hamburger toggle
