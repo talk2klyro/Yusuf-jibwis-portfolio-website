@@ -1,0 +1,121 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Man - Services</title>
+<style>
+/* === Reset & Base Styles === */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Arial',sans-serif;}
+body {background:#0a0a0a; color:#f0f0f0;}
+a {text-decoration:none; color: inherit;}
+
+/* === Navigation Bar === */
+nav {
+  position: fixed; top:0; width:100%; background: rgba(10,10,10,0.85);
+  display:flex; justify-content: space-between; align-items:center;
+  padding:15px 5%; z-index:1000; border-bottom: 1px solid #00ffe0;
+}
+nav .logo {font-size:1.5em; font-weight:bold; color:#00ffe0;}
+nav ul {display:flex; list-style:none; gap:25px;}
+nav ul li a {color:#00ffe0; transition:0.3s;}
+nav ul li a:hover {text-shadow:0 0 8px #00ffe0;}
+.hamburger {display:none; flex-direction:column; cursor:pointer;}
+.hamburger div {width:25px; height:3px; background:#00ffe0; margin:4px 0;}
+
+/* === Hero Section === */
+.hero {
+  height:30vh; display:flex; justify-content:center; align-items:center;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  margin-top:60px; color:#00ffe0; text-align:center;
+}
+.hero h1 {font-size:3em; margin-bottom:10px;}
+.hero p {font-size:1.2em;}
+
+/* === Services Section === */
+.services-container {
+  width:90%; max-width:1000px; margin:60px auto; display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap:25px;
+}
+.service-card {
+  background: rgba(0,255,224,0.05);
+  border: 2px solid #00ffe0;
+  border-radius:15px;
+  padding:25px;
+  text-align:center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor:pointer;
+}
+.service-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 20px #00ffe0;
+}
+.service-card h3 {color:#00ffe0; margin-bottom:10px;}
+.service-card p {font-size:1em; line-height:1.5; color:#e0f7f4;}
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+  <div class="logo">Cyber Man</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div>
+    <h1>Services</h1>
+    <p>Steps to Secure Your Social Media</p>
+  </div>
+</section>
+
+<!-- Services Cards -->
+<section class="services-container">
+  <div class="service-card">
+    <h3>1. Strong Passwords</h3>
+    <p>Create unique and complex passwords for each account and update them regularly.</p>
+  </div>
+  <div class="service-card">
+    <h3>2. Two-Factor Authentication</h3>
+    <p>Enable 2FA to add an extra layer of security for your social media accounts.</p>
+  </div>
+  <div class="service-card">
+    <h3>3. Privacy Settings</h3>
+    <p>Configure privacy settings to control who sees your posts, profile, and activity.</p>
+  </div>
+  <div class="service-card">
+    <h3>4. Recognize Phishing</h3>
+    <p>Be aware of suspicious links and messages to prevent unauthorized access.</p>
+  </div>
+  <div class="service-card">
+    <h3>5. Regular Monitoring</h3>
+    <p>Check account activity regularly and remove unknown devices or apps.</p>
+  </div>
+  <div class="service-card">
+    <h3>6. Backup & Recovery</h3>
+    <p>Keep account recovery options updated and maintain backups for important data.</p>
+  </div>
+</section>
+
+<script>
+// Hamburger toggle
+function toggleMenu(){
+  const ul = document.querySelector('nav ul');
+  ul.style.display = ul.style.display==='flex' ? 'none' : 'flex';
+}
+</script>
+
+</body>
+</html>
